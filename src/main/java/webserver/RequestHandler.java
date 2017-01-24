@@ -39,6 +39,7 @@ public class RequestHandler extends Thread {
         	// 1단계 : InputStream을 한줄단위로 읽기위해 BufferedReader를 생성
         	BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
         	String line = br.readLine();
+        	log.debug(line);
         	if (line == null) {
         		return;
         	}
@@ -49,7 +50,7 @@ public class RequestHandler extends Thread {
         	int length = 0;
         	while (!"".equals(line)) {
         		line = br.readLine();
-        		
+        		log.debug(line);
         		if (line.contains("Content-Length")){
         			String str[] = line.split(":");
         			length = Integer.parseInt(str[1].trim());
